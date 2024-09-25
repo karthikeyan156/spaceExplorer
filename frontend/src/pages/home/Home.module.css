@@ -1,0 +1,99 @@
+.hero {
+  background-image: url('https://svs.gsfc.nasa.gov/vis/a010000/a014100/a014146/BH_accretion_disk_viz_desktop.png'); /* Update this with your image path */
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the background image */
+  color: white;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text */
+  /*https://imageio.forbes.com/specials-images/imageserve/624c6d084510a29690cb8b21/Earth-and-Solar-system-planets-/960x0.jpg?format=jpg&width=960 */
+  /*https://svs.gsfc.nasa.gov/vis/a010000/a014100/a014146/BH_accretion_disk_viz_desktop.png */
+}
+
+.heroContent {
+  max-width: 800px; /* Limit width for better readability */
+}
+
+.whiteText {
+  font-size: 3rem; /* Adjust size as needed */
+  margin: 0;
+}
+
+.subText {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.ctaButton {
+  background-color: #FFD700; /* Gold color for CTA */
+  color: #1A1A4B;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem; /* Adjust button text size */
+}
+
+.ctaButton:hover {
+  background-color: #FFC300; /* Lighter gold on hover */
+}
+
+.contentContainer {
+  padding: 20px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #FFC300;
+  text-align: center;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #34495e; /* Card background */
+  color: #ecf0f1; /* Text color */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 200px; /* Set width as needed */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+}
+
+.carouselContainer {
+  max-width: 40% ;/* Set a maximum width for the carousel */
+  margin: 0 auto; /* Center the carousel */
+  position: relative;
+  max-height: 10%;
+}
+
+.carousel .slider-wrapper {
+  overflow: hidden; /* Ensure no overflow outside the container */
+}
+
+.carousel img {
+  width: 70%; /* Make the image take the full width */
+  height: 70%; /* Set a fixed height for the image container */
+  object-fit: cover; /* Cover ensures the image retains its aspect ratio */
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.carousel .legend {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent legend background */
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+}

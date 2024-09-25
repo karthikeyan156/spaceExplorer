@@ -1,0 +1,93 @@
+/* login.module.css */
+.container {
+  background-image: url('https://static.vecteezy.com/system/resources/previews/005/424/713/large_2x/3d-render-office-design-modern-meeting-room-mockup-with-black-and-white-concept-free-photo.jpg');
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
+
+.orgName {
+  font-size: 3rem;
+  margin-bottom: 20px; /* Sufficient spacing between the organization name and form container */
+  font-weight: bold;
+  text-align: center; /* Ensures the text is centered */
+}
+
+.logo {
+  width: 100px; /* Slightly larger logo for visibility */
+  height: 100px; /* Maintain aspect ratio */
+  background-image: url('https://png.pngtree.com/templates/20180813/community-organization-logo-design-template-png_28632.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0 auto 15px; /* Adjust margin for balance */
+}
+
+
+form {
+  width: 100%; /* Use full width of container */
+  display: flex; /* Ensures flex properties */
+  flex-direction: column; /* Stacks children vertically */
+  align-items: center; /* Aligns children (form elements) centrally */
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.2rem; /* Increased label size for readability */
+  font-weight: 500; /* Semi-bold labels */
+}
+
+form input {
+  font-size: 1.1rem;
+  padding: 14px; /* Increased padding for better interaction */
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px; /* More rounded corners */
+  width: 100%; /* Full width inputs */
+  box-sizing: border-box; /* Include padding and border in width */
+}
+
+.error {
+  color: #ff4d4d; /* More vibrant red for error messages */
+  margin-bottom: 20px;
+  font-size: 1rem;
+  text-align: center;
+  width: 100%; /* Error message full width */
+}
+
+
+  .loginFormContainer {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    width: 90%;
+    max-width: 360px;
+    text-align: center; /* Center text alignment for all children */
+  }
+
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 30px; /* Adjust padding for aesthetics */
+  font-size: 1rem;
+  font-weight: 600; /* Bold text for button */
+  cursor: pointer;
+  border-radius: 8px; /* Rounded button */
+  transition: background-color 0.3s, transform 0.2s;
+  width: 50%; /* Button width to make it visually appealing */
+  margin-top: 20px; /* Space from the last input or element above */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}

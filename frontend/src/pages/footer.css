@@ -1,0 +1,29 @@
+/* Footer Styles */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+  }
+  
+  .footer div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .footer-left, .footer-center, .footer-right {
+    flex: 1;
+  }
+  
+  .footer-right {
+    text-align: right;
+  }
+  
+  /* Social media icon sizes */
+  .footer img {
+    width: 24px;
+    margin: 0 5px;
+  }

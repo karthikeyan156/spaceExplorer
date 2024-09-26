@@ -23,7 +23,7 @@ function Home() {
       try {
         const apiKey = 'your_nasa_api_key';
         const roverImagesResponse = await axios.get(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=VMOjuWEISLCyXMuho1CvGAhXp2N7QF6RGrVdBA60`
+          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=pancam&api_key=VMOjuWEISLCyXMuho1CvGAhXp2N7QF6RGrVdBA60`
         );
         setMarsRoverImages(roverImagesResponse.data.photos);
       } catch (error) {
@@ -62,23 +62,41 @@ function Home() {
       </div>
 
       {/* Featured Content Section */}
-      <div className={styles.contentContainer}>
-        <h2 className={styles.sectionTitle}>Story of the Week</h2>
-        <div className={styles.cardContainer}>
-          <div className={styles.card}>
-            <h3>Astronomy Picture of the Day</h3>
-            <p>Daily stunning images and explanations from the world of astronomy.</p>
-          </div>
-          <div className={styles.card}>
-            <h3>Mars Rover Photos</h3>
-            <p>Latest images captured by the rovers exploring the Martian surface.</p>
-          </div>
-          <div className={styles.card}>
-            <h3>Space News</h3>
-            <p>Stay updated with the latest happenings in space exploration.</p>
-          </div>
-        </div>
+<div className={styles.contentContainer}>
+  <h2 className={styles.sectionTitle}>Story of the Week</h2>
+  <div className={styles.cardContainer}>
+    <div className={styles.card} onClick={() => openModal('Astronomy Picture of the Day')}>
+      <img src="image-url-1.jpg" alt="Astronomy Picture of the Day" className={styles.cardImage} />
+      <div className={styles.cardText}>
+        <h3>Astronomy Picture of the Day</h3>
+        <p>Daily stunning images and explanations from the world of astronomy.</p>
       </div>
+    </div>
+    <div className={styles.card} onClick={() => openModal('Mars Rover Photos')}>
+      <img src="image-url-2.jpg" alt="Mars Rover Photos" className={styles.cardImage} />
+      <div className={styles.cardText}>
+        <h3>Mars Rover Photos</h3>
+        <p>Latest images captured by the rovers exploring the Martian surface.</p>
+      </div>
+    </div>
+    <div className={styles.card} onClick={() => openModal('Space News')}>
+      <img src="image-url-3.jpg" alt="Space News" className={styles.cardImage} />
+      <div className={styles.cardText}>
+        <h3>Space News</h3>
+        <p>Stay updated with the latest happenings in space exploration.</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Modal for displaying expanded content */}
+  <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.modal}>
+    <div className={styles.modalContent}>
+      <h2>titla</h2>
+      {/* <img src={currentNews.image} alt={currentNews.title} className={styles.modalImage} /> */}
+      <p>tis is full text</p>
+    </div>
+  </Modal>
+</div>
 
       {/* Mars Rover Carousel */}
       <div className={styles.carouselContainer}>

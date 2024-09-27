@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from './about.module.css';
 import NavBar from '../nav';
-import Footer from '../footer';
+
 const About = () => {
   const [pictures] = useState([
     { src: 'https://fourwaves.com/media/jjtaaupz/conference-speaker.jpg?quality=100&rnd=132864618244570000', alt: 'Image 1 Description' },
@@ -75,8 +75,7 @@ const About = () => {
         </Slider>
       </section>
      
-          </div>
-          <Footer />
+          </div>x
           </div>
   );
 };

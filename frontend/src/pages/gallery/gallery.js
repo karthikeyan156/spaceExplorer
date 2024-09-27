@@ -1,6 +1,6 @@
 import styles from './gallery.module.css';  // Make sure to create and import the corresponding CSS
 import NavBar from '../nav';
-import Footer from '../footer'
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 

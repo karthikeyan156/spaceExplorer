@@ -6,7 +6,7 @@ import About from './pages/about/about';
 import Paper from './pages/paper/paper';
 import Login from './pages/login/login';
 import PaperDetails from './pages/paper/paperDetails';
-
+import Gallery from './pages/gallery/gallery'
 import './App.css';
 import NavBar from './pages/nav';
 function App() {

@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home/home';
 import About from './pages/about/about';
 
-import Paper from './pages/paper/paper';
-import Login from './pages/login/login';
-import PaperDetails from './pages/paper/paperDetails';
+import Mars from './pages/mars/mars';
 import Gallery from './pages/gallery/gallery'
 import './App.css';
 import NavBar from './pages/nav';
@@ -17,9 +15,8 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} /> {/* You might want to update this to point to an actual Profile component */}
-          <Route path="/papers" element={<Paper />} />
+          <Route path="/mars" element={<Mars />} />
           <Route path="/" element={<Home />} />
-          <Route path="/paperDetails/:paperId" element={<PaperDetails />} />
         </Routes>
       </div>  
     </Router>

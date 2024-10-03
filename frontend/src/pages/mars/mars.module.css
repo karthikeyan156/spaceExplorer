@@ -1,0 +1,120 @@
+.marsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ff5722;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.weatherContainer {
+  background-color: #222;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0px 4px 20px rgba(255, 87, 34, 0.5);
+  position: relative;
+}
+
+.weatherContainer h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffcc00;
+  letter-spacing: 1px;
+}
+
+.weatherIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 50px;
+}
+
+.weatherStats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.weatherStats p {
+  margin: 0;
+}
+
+.weatherGraph {
+  margin-top: 20px;
+  max-width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.imageGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.imageCard {
+  background-color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: 250px;
+  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(255, 87, 34, 0.7);
+}
+
+.roverImage {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ff5722;
+  transition: opacity 0.3s ease;
+}
+
+.roverImage:hover {
+  opacity: 0.9;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.solInput {
+  background-color: #333;
+  border: 1px solid #ff5722;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+.solInput:focus {
+  outline: none;
+  border-color: #ffcc00;
+}

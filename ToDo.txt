@@ -1,4 +1,5 @@
 Frontend :
-add new page that have lots of nasa archives
-add new feature with interactive ai 
+add new page that have lots of nasa archives - done
+add new feature with interactive ai - not started
 Backend :
+add required apis

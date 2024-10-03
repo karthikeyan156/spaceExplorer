@@ -135,4 +135,131 @@
   height: auto;
   margin-bottom: 20px;
 }
+/* Container for APOD Section */
+.apodContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Full screen height */
+  padding: 20px;
+}
 
+/* APOD Content to split into two halves */
+.apodContent {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+}
+
+.apodImage {
+  flex: 1;
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.apodVideo {
+  flex: 1;
+  max-width: 50%;
+  height: auto;
+}
+
+.apodText {
+  flex: 1;
+  padding-left: 40px;
+  text-align: left;
+  color: #f0f0f0; /* Light gray color for the text */
+}
+
+.apodText h3 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #ffdd57; /* Golden color for the heading */
+}
+
+.apodText p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #c0c0c0; /* Light gray for explanation */
+}
+
+.apodText strong {
+  color: #f0f0f0; /* Use the same color as the text for strong elements */
+}
+
+
+
+
+@media (max-width: 768px) {
+  /* Stack content vertically on smaller screens */
+  .apodContent {
+    flex-direction: column;
+  }
+
+  .apodImage,
+  .apodVideo {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .apodText {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+
+
+
+.newsletterSection {
+  padding: 20px;
+  background-color: #151515;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.newsletterForm {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletterInput {
+  padding: 10px;
+  width: 300px;
+  font-size: 16px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  outline: none;
+}
+
+.newsletterButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007BFF;
+  color: rgb(23, 23, 23);
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  max-width: 10%;
+}
+
+.newsletterButton:hover {
+  background-color: #0056b3;
+}
+
+.successMessage {
+  color: green;
+  margin-top: 10px;
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 10px;
+}

@@ -1,68 +1,167 @@
-/* Container for the gallery */
 .galleryContainer {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Search Form */
-  .searchForm {
-    margin-bottom: 20px;
-  }
-  
-  .searchInput {
-    padding: 10px;
-    width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .searchButton {
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .searchButton:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Grid Layout */
-  .gridContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  
-  .gridItem {
-    width: 30%;
-    margin-bottom: 20px;
-    background-color: #f4f4f4;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .thumbnail {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .caption {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .caption h3 {
-    margin: 10px 0 5px 0;
-  }
-  
-  .caption p {
-    font-size: 0.9em;
-    color: #666;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; /* Center the container */
+}
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: -webkit-linear-gradient(#007BFF, #00C6FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Gradient text effect */
+}
+
+.searchForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.searchInput {
+  padding: 15px;
+  width: 500px; /* Increased width for longer search bar */
+  font-size: 18px;
+  border: 2px solid #007BFF;
+  border-radius: 0; /* Removed curved edges */
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.1);
+}
+
+.searchInput:focus {
+  border-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.searchButton {
+  padding: 15px 20px;
+  font-size: 16px;
+  margin-left: 10px;
+  width: 120px; /* Shorter button width */
+  background-color: #007BFF;
+  color: white;
+  border: 2px solid #007BFF;
+  border-radius: 0; /* Removed curved edges */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 123, 255, 0.1);
+}
+
+.searchButton:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+}
+
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.gridItem {
+  width: 300px;
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gridItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.thumbnail {
+  width: 100%;
+  height: 200px; /* Set a fixed height for thumbnails */
+  object-fit: cover; /* Ensures the image scales properly within the box */
+  border-radius: 5px;
+}
+
+.caption {
+  margin-top: 10px;
+}
+
+.caption h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.caption p {
+  font-size: 14px;
+  color: #555;
+  max-height: 60px; /* Limit the description height */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readMore {
+  color: #007BFF;
+  cursor: pointer;
+  font-size: 14px;
+  display: block;
+  margin-top: 5px;
+}
+
+.readMore:hover {
+  text-decoration: underline;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+
+.modalImage {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}

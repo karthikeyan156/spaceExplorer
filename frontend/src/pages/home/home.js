@@ -2,36 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Modal from 'react-modal';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from '../home/Home.module.css'; // Adjust the path as needed
 import NavBar from '../nav';
+
 Modal.setAppElement('#root'); // For accessibility reasons
 
 function Home() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [apod, setApod] = useState({});
   const [currentQuery, setCurrentQuery] = useState({});
-  const [answer, setAnswer] = useState('');
-  const [paperSubmissions, setPaperSubmissions] = useState([]);
-  const [reviewerQueries, setReviewerQueries] = useState([]);
-  const [marsRoverImages, setMarsRoverImages] = useState([]);
+  const [email, setEmail] = useState('');
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailError, setEmailError] = useState(null);
 
   useEffect(() => {
-
-
-    const fetchMarsRoverImages = async () => {
+    // Fetch NASA's APOD (Astronomy Picture of the Day)
+    const fetchApod = async () => {
       try {
-        const apiKey = 'your_nasa_api_key';
-        const roverImagesResponse = await axios.get(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=pancam&api_key=VMOjuWEISLCyXMuho1CvGAhXp2N7QF6RGrVdBA60`
-        );
-        setMarsRoverImages(roverImagesResponse.data.photos);
+        const response = await axios.get(`http://localhost:2000/nasa/apod`);
+        setApod(response.data.data);
       } catch (error) {
-        console.error('Error fetching Mars Rover images:', error);
+        console.error('Error fetching APOD:', error);
       }
     };
 
-    fetchMarsRoverImages();
+    fetchApod();
   }, []);
 
   const openModal = (query) => {
@@ -41,75 +36,88 @@ function Home() {
 
   const closeModal = () => {
     setModalIsOpen(false);
-    setAnswer('');
   };
 
-  const handleSubmit = () => {
-    alert('Message sent');
-    closeModal();
+  // Handle newsletter subscription
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setEmailSent(false);
+    setEmailError(null);
+
+    try {
+      // Send email to the backend
+      const response = await axios.post('http://localhost:2000/user/subscribe', { email });
+
+      if (response.status === 200) {
+        setEmailSent(true);
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Error subscribing to the newsletter:', error);
+      setEmailError('Error subscribing. Please try again.');
+    }
   };
 
   return (
     <div>
       <NavBar />
+
       {/* Hero Section */}
       <div className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1 className={styles.whiteText}>Explore the Universe</h1>
+          <p className={styles.whiteText}>Explore the Universe</p>
           <p className={styles.subText}>Discover stunning images and data from NASA's vast archives.</p>
           <Link to="/gallery" className={styles.ctaButton}>View Gallery</Link>
         </div>
       </div>
 
-      {/* Featured Content Section */}
-<div className={styles.contentContainer}>
-  <h2 className={styles.sectionTitle}>Story of the Week</h2>
-  <div className={styles.cardContainer}>
-    <div className={styles.card} onClick={() => openModal('Astronomy Picture of the Day')}>
-      <img src="image-url-1.jpg" alt="Astronomy Picture of the Day" className={styles.cardImage} />
-      <div className={styles.cardText}>
-        <h3>Astronomy Picture of the Day</h3>
-        <p>Daily stunning images and explanations from the world of astronomy.</p>
+      {/* NASA Picture of the Day Section */}
+      <div className={styles.apodContainer}>
+        <div className={styles.apodContent}>
+          {apod.media_type === 'image' ? (
+            <img src={apod.url} alt={apod.title} className={styles.apodImage} />
+          ) : (
+            <iframe
+              title={apod.title}
+              src={apod.url}
+              frameBorder="0"
+              className={styles.apodVideo}
+              allowFullScreen
+            />
+          )}
+          <div className={styles.apodText}>
+            <h3>{apod.title}</h3>
+            <p>{apod.explanation}</p>
+            <p><strong>Date:</strong> {apod.message}</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div className={styles.card} onClick={() => openModal('Mars Rover Photos')}>
-      <img src="image-url-2.jpg" alt="Mars Rover Photos" className={styles.cardImage} />
-      <div className={styles.cardText}>
-        <h3>Mars Rover Photos</h3>
-        <p>Latest images captured by the rovers exploring the Martian surface.</p>
-      </div>
-    </div>
-    <div className={styles.card} onClick={() => openModal('Space News')}>
-      <img src="image-url-3.jpg" alt="Space News" className={styles.cardImage} />
-      <div className={styles.cardText}>
-        <h3>Space News</h3>
-        <p>Stay updated with the latest happenings in space exploration.</p>
-      </div>
-    </div>
-  </div>
 
-  {/* Modal for displaying expanded content */}
-  <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.modal}>
-    <div className={styles.modalContent}>
-      <h2>titla</h2>
-      {/* <img src={currentNews.image} alt={currentNews.title} className={styles.modalImage} /> */}
-      <p>tis is full text</p>
-    </div>
-  </Modal>
-</div>
-
-      {/* Mars Rover Carousel */}
-      <div className={styles.carouselContainer}>
-        <h2 className={styles.sectionTitle}>Latest Mars Rover Images</h2>
-        <Carousel showThumbs={false} autoPlay infiniteLoop>
-          {marsRoverImages.map((image) => (
-            <div key={image.id}>
-              <img src={image.img_src} alt={`Mars Rover - ${image.camera.full_name}`} />
-              <p className="legend">{image.camera.full_name}</p>
-            </div>
-          ))}
-        </Carousel>
+      {/* Newsletter Subscription Section */}
+      <div className={styles.newsletterSection}>
+        <h2 className={styles.sectionTitle}>Subscribe to our Newsletter</h2>
+        <form onSubmit={handleSubscribe} className={styles.newsletterForm}>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            className={styles.newsletterInput}
+          />
+          <button type="submit" className={styles.newsletterButton}>Subscribe</button>
+        </form>
+        {emailSent && <p className={styles.successMessage}>Thank you for subscribing!</p>}
+        {emailError && <p className={styles.errorMessage}>{emailError}</p>}
       </div>
+
+      {/* Modal for Expanded Content (Optional) */}
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} className={styles.modal}>
+        <div className={styles.modalContent}>
+          <h2>{currentQuery.title}</h2>
+          <p>{currentQuery.description}</p>
+        </div>
+      </Modal>
     </div>
   );
 }

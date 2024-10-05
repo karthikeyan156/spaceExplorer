@@ -14,18 +14,24 @@ function Home() {
   const [email, setEmail] = useState('');
   const [emailSent, setEmailSent] = useState(false);
   const [emailError, setEmailError] = useState(null);
+  const [currentDate, setCurrentDate] = useState(''); // State for current date
 
   useEffect(() => {
     // Fetch NASA's APOD (Astronomy Picture of the Day)
     const fetchApod = async () => {
       try {
-        const url=process.env.REACT_APP_API_ENDPOINT;
+        const url = process.env.REACT_APP_API_ENDPOINT;
         const response = await axios.get(`${url}/nasa/apod`);
         setApod(response.data.data);
       } catch (error) {
         console.error('Error fetching APOD:', error);
       }
     };
+
+    // Set the current date when the component mounts
+    const today = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    setCurrentDate(today.toLocaleDateString(undefined, options)); // Format the date
 
     fetchApod();
   }, []);
@@ -72,6 +78,11 @@ function Home() {
         </div>
       </div>
 
+      {/* Current Date */}
+      <div className={styles.currentDate}>
+        <p className={styles.dateText}>Today's Date: {currentDate}</p>
+      </div>
+
       {/* NASA Picture of the Day Section */}
       <div className={styles.apodContainer}>
         <div className={styles.apodContent}>
@@ -89,7 +100,7 @@ function Home() {
           <div className={styles.apodText}>
             <h3>{apod.title}</h3>
             <p>{apod.explanation}</p>
-            <p><strong>Date:</strong> {apod.message}</p>
+            <p><strong>Date:</strong> {apod.date}</p> {/* Use the date from APOD data */}
           </div>
         </div>
       </div>

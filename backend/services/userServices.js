@@ -2,7 +2,7 @@ export async function subscribe(req, res) {
     try {
       const email=req.body.email;
       res.status(200).json({
-        message: "APOD Data Retrieved Successfully", 
+        message: "Successfully added", 
       });
     } catch (err) {
       console.log("Error fetching APOD data:", err);

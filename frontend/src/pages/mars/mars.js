@@ -1,3 +1,4 @@
+// Mars.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../mars/mars.module.css';
@@ -52,9 +53,9 @@ function Mars() {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar />
       <div className={styles.marsContainer}>
-        <h1 className={styles.pageTitle}>Explore Mars</h1>
+        <h2>Explore Mars</h2>
         
         {loading ? (
           <p>Loading Mars data...</p>
@@ -64,15 +65,16 @@ function Mars() {
           <>
             {/* Mars Weather Section */}
             <div className={styles.weatherContainer}>
-              <h2>Mars Weather</h2>
+              <h3>Mars Weather</h3>
               <p><strong>Temperature:</strong> {weather.temperature?.toFixed(1)}°C</p>
               <p><strong>Wind Speed:</strong> {weather.windSpeed?.toFixed(1)} m/s</p>
               <p><strong>Pressure:</strong> {weather.pressure?.toFixed(1)} Pa</p>
             </div>
 
             {/* Mars Rover Images Section */}
+            <h3>Mars Rover Images</h3>
             <div className={styles.imageGrid}>
-              <h2>Mars Rover Images</h2>
+             
               {roverImages.map((image) => (
                 <div key={image.id} className={styles.imageCard}>
                   <img src={image.img_src} alt={`Mars Rover - ${image.rover.name}`} className={styles.roverImage} />

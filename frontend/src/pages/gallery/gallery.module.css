@@ -1,22 +1,57 @@
+/* Add the starry background and animation */
+@keyframes moveStars {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1000px 1000px;
+  }
+}
+
+@keyframes twinklingStars {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.backgroundani
+{background: url('https://www.freeiconspng.com/thumbs/stars-png/stars-28.png') repeat;
+  animation: moveStars 20s linear infinite;
+background-color: black;}
+ 
+/* Set the starry background for the main container */
 .galleryContainer {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto; /* Center the container */
+  position: relative; /* Set position relative for absolute children */
+ /* Move stars in the background */
 }
 
-h1 {
+
+/* https://www.pixel4k.com/wp-content/uploads/2018/12/milky-way-starry-sky-night-4k_1546278925.jpg */
+h1{
   text-align: center;
   font-size: 36px;
   font-weight: bold;
-  color: #333;
+  color: #fff;
   margin-bottom: 30px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background: -webkit-linear-gradient(#007BFF, #00C6FF);
+  background: -webkit-linear-gradient(#7328ff, #6f00ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; /* Gradient text effect */
+  z-index: 1; /* Ensure the heading stays above stars */
+  position: relative;
 }
 
+/* Form styles */
 .searchForm {
   display: flex;
   justify-content: center;
@@ -27,7 +62,7 @@ h1 {
   padding: 15px;
   width: 500px; /* Increased width for longer search bar */
   font-size: 18px;
-  border: 2px solid #007BFF;
+  border: 2px solid #4322ff;
   border-radius: 0; /* Removed curved edges */
   outline: none;
   transition: all 0.3s ease;
@@ -39,14 +74,18 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
 }
 
+.galleryContainer {
+  color: #6515fa; /* Change to your desired color */
+}
+
 .searchButton {
   padding: 15px 20px;
   font-size: 16px;
   margin-left: 10px;
   width: 120px; /* Shorter button width */
-  background-color: #007BFF;
+  background-color: #4f20fa;
   color: white;
-  border: 2px solid #007BFF;
+  border: 2px solid #150d0b;
   border-radius: 0; /* Removed curved edges */
   cursor: pointer;
   transition: all 0.3s ease;

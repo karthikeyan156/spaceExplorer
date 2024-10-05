@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './pages/home/home';
-import About from './pages/about/about';
+
 
 import Mars from './pages/mars/mars';
 import Gallery from './pages/gallery/gallery'
@@ -13,10 +13,12 @@ function App() {
       <div className="content">
 
         <Routes>
-          <Route path="/about" element={<About />} />
+         
           <Route path="/gallery" element={<Gallery />} /> {/* You might want to update this to point to an actual Profile component */}
           <Route path="/mars" element={<Mars />} />
+        
           <Route path="/" element={<Home />} />
+          
         </Routes>
       </div>  
     </Router>

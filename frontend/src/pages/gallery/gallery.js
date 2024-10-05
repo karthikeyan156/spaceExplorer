@@ -18,8 +18,9 @@ function Gallery() {
       setError(null);
   
       try {
+        const url=process.env.REACT_APP_API_ENDPOINT;
         const response = await axios.post(
-          `http://localhost:2000/nasa/gallery`, 
+          `${url}/nasa/gallery`, 
           { query },  
           { cancelToken: source.token }
         );

@@ -28,20 +28,17 @@ function Mars() {
       setError(null);
       
       try {
-        // Mars Rover Image API
-        const roverResponse = await axios.get(
-          `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY`
-        );
+        const url=process.env.REACT_APP_API_ENDPOINT;
+
+        // Fetch Mars Rover Images from local API
+        const roverResponse = await axios.get(`${url}/mars/rover`);
         // Limit images to 5 per camera
-        const limitedRoverImages = limitImagesPerCamera(roverResponse.data.photos);
+        const limitedRoverImages = limitImagesPerCamera(roverResponse.data.data);
         setRoverImages(limitedRoverImages);
 
-        // Mars Weather API
-        const weatherResponse = await axios.get(
-          `https://api.nasa.gov/insight_weather/?api_key=DEMO_KEY&feedtype=json&ver=1.0`
-        );
-        const latestSol = weatherResponse.data.sol_keys[0];
-        setWeather(weatherResponse.data[latestSol]);
+        // Fetch Mars Weather from local API
+        const weatherResponse = await axios.get(`${url}/mars/weather`);
+        setWeather(weatherResponse.data.data);
 
         setLoading(false);
       } catch (error) {
@@ -56,38 +53,38 @@ function Mars() {
   return (
     <div>
       <NavBar></NavBar>
-    <div className={styles.marsContainer}>
-      <h1 className={styles.pageTitle}>Explore Mars</h1>
-      
-      {loading ? (
-        <p>Loading Mars data...</p>
-      ) : error ? (
-        <p className={styles.errorMessage}>{error}</p>
-      ) : (
-        <>
-          {/* Mars Weather Section */}
-          <div className={styles.weatherContainer}>
-            <h2>Mars Weather</h2>
-            <p><strong>Temperature:</strong> {weather.AT?.av.toFixed(1)}°C</p>
-            <p><strong>Wind Speed:</strong> {weather.HWS?.av.toFixed(1)} m/s</p>
-            <p><strong>Pressure:</strong> {weather.PRE?.av.toFixed(1)} Pa</p>
-          </div>
+      <div className={styles.marsContainer}>
+        <h1 className={styles.pageTitle}>Explore Mars</h1>
+        
+        {loading ? (
+          <p>Loading Mars data...</p>
+        ) : error ? (
+          <p className={styles.errorMessage}>{error}</p>
+        ) : (
+          <>
+            {/* Mars Weather Section */}
+            <div className={styles.weatherContainer}>
+              <h2>Mars Weather</h2>
+              <p><strong>Temperature:</strong> {weather.temperature?.toFixed(1)}°C</p>
+              <p><strong>Wind Speed:</strong> {weather.windSpeed?.toFixed(1)} m/s</p>
+              <p><strong>Pressure:</strong> {weather.pressure?.toFixed(1)} Pa</p>
+            </div>
 
-          {/* Mars Rover Images Section */}
-          <div className={styles.imageGrid}>
-            <h2>Mars Rover Images</h2>
-            {roverImages.map((image) => (
-              <div key={image.id} className={styles.imageCard}>
-                <img src={image.img_src} alt={`Mars Rover - ${image.rover.name}`} className={styles.roverImage} />
-                <p><strong>Rover:</strong> {image.rover.name}</p>
-                <p><strong>Camera:</strong> {image.camera.full_name}</p>
-                <p><strong>Date:</strong> {image.earth_date}</p>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+            {/* Mars Rover Images Section */}
+            <div className={styles.imageGrid}>
+              <h2>Mars Rover Images</h2>
+              {roverImages.map((image) => (
+                <div key={image.id} className={styles.imageCard}>
+                  <img src={image.img_src} alt={`Mars Rover - ${image.rover.name}`} className={styles.roverImage} />
+                  <p><strong>Rover:</strong> {image.rover.name}</p>
+                  <p><strong>Camera:</strong> {image.camera.full_name}</p>
+                  <p><strong>Date:</strong> {image.earth_date}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

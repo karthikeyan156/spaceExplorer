@@ -19,7 +19,8 @@ function Home() {
     // Fetch NASA's APOD (Astronomy Picture of the Day)
     const fetchApod = async () => {
       try {
-        const response = await axios.get(`http://localhost:2000/nasa/apod`);
+        const url=process.env.REACT_APP_API_ENDPOINT;
+        const response = await axios.get(`${url}/nasa/apod`);
         setApod(response.data.data);
       } catch (error) {
         console.error('Error fetching APOD:', error);

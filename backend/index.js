@@ -16,9 +16,11 @@ app.use(urlencoded({ extended: true }));
 
 import nasaRoutes from './routes/nasaRoutes.js';
 import userRoutes from './routes/userRoutes.js'
+import marsRoutes from './routes/marsRoutes.js'
 
 app.use("/nasa", nasaRoutes);
 app.use("/user",userRoutes);
+app.use("/mars",marsRoutes);
 app.get('/', (req, res) => {
   res.status(200).json("Hello world");
 });

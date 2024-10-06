@@ -19,7 +19,7 @@ export async function apod(req, res) {
 
 export async function nasaImageAndVideo(req, res) {
   try {
-    const searchQuery  = req; // Get search keyword from the request
+    const searchQuery  = req; 
     // NASA Image and Video Library API URL
     const nasaApiUrl = `https://images-api.nasa.gov/search?q=${encodeURIComponent(searchQuery.body.query)}&media_type=image`;
    
